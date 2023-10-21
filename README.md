@@ -2,6 +2,12 @@
 
 This repository contains classwork and homework assignments for the A2 level Computer Science course at Cedar College, taught by Sir Zain Merchant. The course focuses on Python programming fundamentals required for A2 Level Computer Science Paper 4.
 
+## Table of Contents
+
+- [Lectures/Assignments](#Lectures/Assignments)
+- [Instructor](#Instructor)
+- [Student](#Student)
+
 ## Lectures/Assignments
 - [FIRST-CODE](/cedarLectures/firstcode.py)
 - [FIRST-PROGRAM](/cedarLectures/firstprogram.py)
