@@ -64,4 +64,20 @@ print("Lowest Marks scored by")
 for i in range(len(lowestNames)):
     print(lowestNames[i])
 
+print(CSmarks)
+print(CSnames)
 #TASK7: sort the marks array & accordingly names array from highest to lowest marks
+
+for i in range(classSize):
+    for j in range(classSize - i):
+        if CSmarks[j] < CSmarks[j + 1]:
+            temp = CSmarks[j]
+            CSmarks[j] = CSmarks[j+1]
+            CSmarks[j+1] = temp
+            tempName = CSnames[j]
+            CSnames[j] = CSnames[j+1]
+            CSnames[j+1] = tempName
+
+print("Sorted")
+print(CSmarks)
+print(CSnames)
