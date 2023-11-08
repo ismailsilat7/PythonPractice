@@ -45,13 +45,13 @@ print(bonus)
 
 def printScreen():
     print()
-    print('x 0 1 2 x')
+    print('+ 0 1 2 +')
     for row in range(3):
         print(row, end = ' ')
         for col in range(3):
             print(screen[row][col], end = ' ')
         print(row)
-    print('x 0 1 2 x')
+    print('+ 0 1 2 +')
     print()
 
 def notDefault(char):
@@ -62,30 +62,39 @@ def notDefault(char):
 
 
 def isOver():
-    if (screen[0][0] == screen[1][1] and screen[1][1] == screen[2][2]) or (screen[2][2] == screen[1][1] and screen[1][1] == screen[2][2]) or (screen[1][0] == screen[1][1] and screen[1][1] == screen[1][2]):
+
+    if (screen[0][0] == screen[1][1] == screen[2][2]) or (screen[0][2] == screen[1][1] == screen[2][0]) or (screen[1][0] == screen[1][1] == screen[1][2]) or (screen[0][1] == screen[1][1] == screen[2][1]):
         if(notDefault(screen[1][1])):    
             return True, screen[1][1]
-    elif(screen[0][0] == screen[0][1] and screen[0][1] == screen[0][2]):
+    
+    elif(screen[0][0] == screen[0][1] == screen[0][2]):
         if(notDefault(screen[0][1])):
             return True, screen[0][1]
-    elif(screen[2][0] == screen [2][1] and screen[2][1] == screen[2][2]):
+    
+    elif(screen[2][0] == screen [2][1] == screen[2][2]):
         if(notDefault(screen[2][1])):
             return True, screen[2][1]
+    
+    elif(screen[0][0] == screen[1][0] == screen[2][0]):
+        if(notDefault(screen[1][0])):
+            return True, screen[1][0]
+    
+    elif(screen[0][2] == screen[1][2] == screen[2][2]):
+        if(notDefault(screen[1][2])):
+            return True, screen[1][2]
+    
     else:
         emptySpace = 0
-        row = 0
-        col = 0
-        while(emptySpace < 1):
-            if screen[row][col] == initialVar:
-                emptySpace += 1
-            row += 1
-            col += 1
+        for row in range(3):
+            for col in range(3):
+                if screen[row][col] == initialVar:
+                    emptySpace += 1
         if (emptySpace < 1):
             return True, 'draw'
     return False, 'continue'
 
 def getSymbol(name):
-    correctSymbols = ['+', '-']
+    correctSymbols = ['X', 'O']
     symbol = input(f"{name}, please enter your symbol ('{correctSymbols[0]}' or '{correctSymbols[1]}'): ")
     while symbol not in correctSymbols:
         print("Invalid Symbol Entered")
@@ -97,7 +106,6 @@ def correctPosition(position):
         return True
     else:
         return False
-
 
 def getChoice(name):
     row = int(input(f"{name}, please enter your desired position's row (0, 1 or 2) : "))
@@ -118,16 +126,16 @@ screen = [[initialVar for i in range(3)] for i in range(3)]
 print()
 print("A 2 Player Tic Tac Toe Game")
 
-player_one = input("Player 1, please enter your name: ").lower()
-player_two = input("Player 2, please enter your name: ").lower()
+player_one = input("Player 1, please enter your name: ")
+player_two = input("Player 2, please enter your name: ")
 
 print()
 
 symbol_one = getSymbol(player_one)
-if (symbol_one == '+'):
-    symbol_two = '-'
+if (symbol_one == 'X'):
+    symbol_two = 'O'
 else:
-    symbol_two = '+'
+    symbol_two = 'X'
 print(f"{player_two}'s symbol is '{symbol_two}'")
 
 print()
@@ -146,12 +154,12 @@ while(over != True):
 
     over, result = isOver()
 
-    while(result == 'continue'):
+    while(over != True):
         row, col = getChoice(player_two)
         screen[row][col] = symbol_two
         printScreen()
-        result = ''
-    over, result = isOver()
+        over, result = isOver()
+    
 
 if result == 'draw':
     print('This game is a draw')
