@@ -45,14 +45,13 @@ print(bonus)
 
 def printScreen():
     print()
-    print('+ 0 1 2 +')
+    print('    0   1   2')
+    print('  +---+---+---+')
     for row in range(3):
-        print(row, end = ' ')
-        for col in range(3):
-            print(screen[row][col], end = ' ')
-        print(row)
-    print('+ 0 1 2 +')
+        print(f"{row} | {screen[row][0]} | {screen[row][1]} | {screen[row][2]} |")
+        print('  +---+---+---+')
     print()
+
 
 def notDefault(char):
     if char != initialVar:
