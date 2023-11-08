@@ -146,19 +146,22 @@ printScreen()
 
 over = False
 result = ''
+current_player = player_one
+current_symbol = symbol_one
 while(over != True):
-
-    row, col = getChoice(player_one)
-    screen[row][col] = symbol_one
+    row, col = getChoice(current_player)
+    screen[row][col] = current_symbol
     printScreen()
 
-    over, result = isOver()
+    if current_player == player_one:
+        current_player = player_two
+        current_symbol = symbol_two
+    else:
+        current_player = player_one
+        current_symbol = symbol_one
 
-    while(over != True):
-        row, col = getChoice(player_two)
-        screen[row][col] = symbol_two
-        printScreen()
-        over, result = isOver()
+    over, result = isOver()
+    
     
 
 if result == 'draw':
