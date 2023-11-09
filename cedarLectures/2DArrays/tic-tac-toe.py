@@ -145,7 +145,8 @@ while(over != True):
 
     over, result = isOver()
     
-    
+
+winner = ''  
 
 if result == 'draw':
     print('This game is a draw')
@@ -154,11 +155,11 @@ elif result == symbol_one:
 elif result == symbol_two:
     winner = player_two
 
-
-for line in range(3):
-    if (line % 2 != 0):
-        print(f"* {winner.upper()} WINS! *")
-    else:
-        for stars in range(len(f"{winner} WINS!") + 4):
-            print("*", end='')
-        print()
+if winner != '':
+    for line in range(3):
+        if (line % 2 != 0):
+            print(f"* {winner.upper()} WINS! *")
+        else:
+            for stars in range(len(f"{winner} WINS!") + 4):
+                print("*", end='')
+            print()
