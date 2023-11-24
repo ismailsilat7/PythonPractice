@@ -1,6 +1,7 @@
 from random import randint
 from time import sleep
 
+# to print screen
 def printScreen():
     print()
     print('    0   1   2')
@@ -10,16 +11,18 @@ def printScreen():
         print('  +---+---+---+')
     print()
 
-
+# to ensure that the character is not the initial variable
 def notDefault(char):
     if char != initialVar:
         return True
     else:
         return False
 
-
+#to find if the game is over, returns true if over
+# also returns wether it's a draw, the game should continue or the symbol of the winner 
 def isOver():
 
+    # if conditions to check if anyone won
     if (screen[0][0] == screen[1][1] == screen[2][2]) or (screen[0][2] == screen[1][1] == screen[2][0]) or (screen[1][0] == screen[1][1] == screen[1][2]) or (screen[0][1] == screen[1][1] == screen[2][1]):
         if(notDefault(screen[1][1])):    
             return True, screen[1][1]
@@ -39,17 +42,19 @@ def isOver():
     elif(screen[0][2] == screen[1][2] == screen[2][2]):
         if(notDefault(screen[1][2])):
             return True, screen[1][2]
-    
     else:
+        #checks for empty spaces
         emptySpace = 0
         for row in range(3):
             for col in range(3):
                 if screen[row][col] == initialVar:
                     emptySpace += 1
+        # checks if space is filled
         if (emptySpace < 1):
             return True, 'draw'
     return False, 'continue'
 
+# get input of symbol from user
 def getSymbol(name):
     correctSymbols = ['X', 'O']
     symbol = input(f"{name}, please enter your symbol ('{correctSymbols[0]}' or '{correctSymbols[1]}'): ")
@@ -58,23 +63,28 @@ def getSymbol(name):
         symbol = input(f"{name}, please enter your symbol ('{correctSymbols[0]}' or '{correctSymbols[1]}'): ")
     return symbol
 
+# ensures if the position chosen is correct
 def correctPosition(position):
     if position >= 0 and position <= 2:
         return True
     else:
         return False
 
+# get user's legal choice of position to enter symbol on the board
 def getChoice(name, mode):
     row = -1
     col = -1
     correct = False
+    # checks if it is AI's turn
     if (mode == 'ai') and (name == 'AI'):
+        # repeats until the position chosen is not legal
         while (correct != True):
             row = randint(0,2)
             col = randint(0,2)
             if (screen[row][col] == initialVar):
                 correct = True
     else:
+        # repeats until the position chosen is not legal
         while(correct != True):
             row = int(input(f"{name}, please enter your desired position's row (0, 1 or 2) : "))
             while(correctPosition(row) == False):
@@ -103,8 +113,9 @@ while (mode not in modes):
     if mode not in modes:
         print("Choice is not valid. Please choose from 'two-player' or 'AI'")   
 
-player_one = input("Player 1, please enter your name: ")
+player_one = input("Player 1, please enter your name: ").lower()
 
+# if mode is AI, the second user will be AI
 if mode == 'ai':
     player_two = 'AI'
 else:
@@ -112,6 +123,7 @@ else:
 
 print()
 
+# get symbol from each user
 symbol_one = getSymbol(player_one)
 if (symbol_one == 'X'):
     symbol_two = 'O'
@@ -129,6 +141,7 @@ over = False
 result = ''
 current_player = player_one
 current_symbol = symbol_one
+# until the game is not over, continue with the game
 while(over != True):
     print(f"{current_player}'s turn")
     sleep(0.5)
