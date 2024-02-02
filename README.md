@@ -9,13 +9,22 @@ This repository contains classwork and homework assignments for the A2 level Com
 - [Student](#Student)
 
 ## Lectures/Assignments
-- [FIRST-CODE](/cedarLectures/firstcode.py)
-- [FIRST-PROGRAM](/cedarLectures/firstprogram.py)
-- [FOR-LOOP](/cedarLectures/for-loop/)
-- [IF-STATEMENTS](/cedarLectures/if-statements/)
-- [WHILE-LOOP](/cedarLectures/while-loop/)
-- [BUILT-IN-FUNCTIONS](/cedarLectures/built-in/)
-- [ROCK-PAPER-SCISSORS-GAME](/cedarLectures/rock-paper-scissors.py)
+
+- [FIRST-PROGRAM](/cedarLectures/firstprogram.py) 
+- [FIRST-CODE](/cedarLectures/firstcode.py) 
+- [while-loop](/cedarLectures/while-loop/)
+- [if-statements](/cedarLectures/if-statements/)
+- [functions](/cedarLectures/functions/)
+- [for-loop](/cedarLectures/for-loop/)
+- [ROCK-PAPER-SCISSORS-GAME](/cedarLectures/rock-paper-scissors.py) 
+- [built-in](/cedarLectures/built-in/)
+- [recursive](/cedarLectures/recursive/)
+- [Arrays](/cedarLectures/Arrays/)
+- [2DArrays](/cedarLectures/2DArrays/)
+- [files](/cedarLectures/files/)
+- [oop](/cedarLectures/oop/)
+- [errors](/cedarLectures/errors/)
+- [algorithms](/cedarLectures/algorithms/)
 
 ## Instructor
 
